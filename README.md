@@ -17,6 +17,7 @@
     * [Stress Testing](#stress-testing)
     * [Soak Testing (Endurance Testing)](#soak-testing-endurance-testing)
     * [Spike Testing](#spike-testing)
+* [Examples](#examples)
 * [Developers](#developers)
 
 ## Performance testing
@@ -100,6 +101,10 @@ performance degradations that may occur over an extended period, simulating real
 Performance spike testing evaluates a system's ability to handle sudden and sharp increases in load or traffic. It
 assesses how well a system can scale up to accommodate unexpected spikes in user activity, such as during promotional
 events, product launches, or sudden increases in website traffic.
+
+## Examples
+
+* [Performance testing using k6 + Elasticsearch + Kibana](https://github.com/eccanto/base-performance-testing-k6-elasticsearch-kibana/tree/main)
 
 ## Developers
 
