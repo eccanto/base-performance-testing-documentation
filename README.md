@@ -104,7 +104,7 @@ events, product launches, or sudden increases in website traffic.
 
 ## Examples
 
-* [Performance testing using k6 + Elasticsearch + Kibana](https://github.com/eccanto/base-performance-testing-k6-elasticsearch-kibana/tree/main)
+* [Performance testing using k6 + Elasticsearch + Kibana + Docker compose](https://github.com/eccanto/base-performance-testing-k6-elasticsearch-kibana/tree/main)
 
 ## Developers
 
