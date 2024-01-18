@@ -17,7 +17,9 @@
     * [Stress Testing](#stress-testing)
     * [Soak Testing (Endurance Testing)](#soak-testing-endurance-testing)
     * [Spike Testing](#spike-testing)
-* [Examples](#examples)
+* [Example](#example)
+  * [Scenario: User login with JWT authentication](#scenario-user-login-with-jwt-authentication)
+  * [Implementations](#implementations)
 * [Developers](#developers)
 
 ## Performance testing
@@ -102,7 +104,31 @@ Performance spike testing evaluates a system's ability to handle sudden and shar
 assesses how well a system can scale up to accommodate unexpected spikes in user activity, such as during promotional
 events, product launches, or sudden increases in website traffic.
 
-## Examples
+## Example
+
+### Scenario: User login with JWT authentication
+
+The system allows users to log in using JWT for authentication. Upon successful login, the system issues a JWT token
+that must be included in subsequent requests to access protected resources.
+
+**Test scenario**
+
+* Simulate concurrent user login attempts.
+* Each login attempt includes a valid username and password.
+* Upon successful login, the system issues a JWT token.
+* The token must be included in subsequent requests for accessing protected resources.
+
+**System parameters**
+
+* **Normal design capacity**: 2000 concurrent users.
+* **Maximum design capacity**: 3000 concurrent users.
+
+**Scenario thresholds**
+
+* **HTTP errors**: HTTP errors should be less than 1%.
+* **Response time**: 95% of requests should be below 500ms.
+
+### Implementations
 
 * [Performance testing using k6 + Elasticsearch + Kibana + Docker compose](https://github.com/eccanto/base-performance-testing-k6-elasticsearch-kibana/tree/main)
 
