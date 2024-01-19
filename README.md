@@ -19,6 +19,10 @@
     * [Spike Testing](#spike-testing)
 * [Example](#example)
   * [Scenario: User login with JWT authentication](#scenario-user-login-with-jwt-authentication)
+    * [Case 1: Load testing](#case-1-load-testing)
+    * [Case 2: Stress testing](#case-2-stress-testing)
+    * [Case 3: Soak testing](#case-3-soak-testing)
+    * [Case 4: Spike testing](#case-4-spike-testing)
   * [Implementations](#implementations)
 * [Developers](#developers)
 
@@ -106,6 +110,8 @@ events, product launches, or sudden increases in website traffic.
 
 ## Example
 
+A simple controlled scenario is defined to run the different types of performance tests.
+
 ### Scenario: User login with JWT authentication
 
 The system allows users to log in using JWT for authentication. Upon successful login, the system issues a JWT token
@@ -128,9 +134,48 @@ that must be included in subsequent requests to access protected resources.
 * **HTTP errors**: HTTP errors should be less than 1%.
 * **Response time**: 95% of requests should be below 500ms.
 
+#### Case 1: Load testing
+
+**Scenario parameters**
+
+* **Maximum number of users**: 2400 concurrent users, 20% more than the normal design capacity.
+* **Ramp-up period**: 1.5 minute, add 400 users every 15 seconds until reaching 2400 concurrent users.
+* **Maximum number of users**: 2 minutes, keep the number of users constant at 2400
+* **Ramp-down period**: 1.5 minutes, reduce 400 users every 30 seconds until reaching 0 concurrent users.
+* **Test duration**: 5 minutes.
+
+#### Case 2: Stress testing
+
+**Scenario parameters**
+
+* **maximum number of users**: 3600 concurrent users, 20% more than the maximum designed capacity.
+* **initial number of users**: 2 minutes, start with 600 concurrent users and gradually increase.
+* **ramp-up period**: 3 minutes, add 500 users every 30 seconds until reaching 3600 concurrent users.
+* **test duration**: 5 minute
+
+#### Case 3: Soak testing
+
+**Scenario parameters**
+
+* **number of users**: 2200 concurrent users, 10% more than the normal design capacity.
+* **test duration**: 24 hours.
+
+#### Case 4: Spike testing
+
+**Scenario parameters**
+
+* `test duration`: ~5 minutes.
+* `number of spikes`: 2 spikes of 3600 concurrent users, 20% more than the maximum designed capacity.
+* `initial number of users`: 1 minute 30 seconds, start with 2000 concurrent users.
+* `first spike`: 1 second, add 1600 to reach 3600 concurrent users.
+* `intermediate number of users`: 2 minutes, decrease to 2000 concurrent users.
+* `second spike`: 1 second, add 1600 to reach 3600 concurrent users.
+* `final number of users`: 1 minute 30 seconds, decrease to 2000 concurrent users.
+
 ### Implementations
 
 * [Performance testing using k6 + Elasticsearch + Kibana + Docker compose](https://github.com/eccanto/base-performance-testing-k6-elasticsearch-kibana/tree/main)
+* [Performance testing using Gatling with Java and Scala](https://github.com/eccanto/base-performance-testing-gatling)
 
 ## Developers
 
