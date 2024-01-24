@@ -139,38 +139,58 @@ that must be included in subsequent requests to access protected resources.
 **Scenario parameters**
 
 * **Maximum number of users**: 2400 concurrent users, 20% more than the normal design capacity.
-* **Ramp-up period**: 1.5 minute, add 400 users every 15 seconds until reaching 2400 concurrent users.
-* **Maximum number of users**: 2 minutes, keep the number of users constant at 2400
-* **Ramp-down period**: 1.5 minutes, reduce 400 users every 30 seconds until reaching 0 concurrent users.
 * **Test duration**: 5 minutes.
+
+**Steps**
+
+1. **Ramp-up period**: increase the number of users from 0 to 2400 in 1.5 minutes.
+2. **Constant period**: keep the number of users constant at 2400 for 2 minutes.
+3. **Ramp-down period**: decrease the number of users from 2400 to 0 in 1.5 minutes.
+
+![Load testing example](https://raw.githubusercontent.com/eccanto/base-performance-testing-k6-elasticsearch-kibana/main/docs/images/kibana-report-load-testing.png)
 
 #### Case 2: Stress testing
 
 **Scenario parameters**
 
-* **maximum number of users**: 3600 concurrent users, 20% more than the maximum designed capacity.
-* **initial number of users**: 2 minutes, start with 600 concurrent users and gradually increase.
-* **ramp-up period**: 3 minutes, add 500 users every 30 seconds until reaching 3600 concurrent users.
-* **test duration**: 5 minute
+* **Maximum number of users**: 3600 concurrent users, 20% more than the maximum designed capacity.
+* **Test duration**: 5 minutes.
+
+**Steps**
+
+1. **Ramp-up period**: increase the number of users from 0 to 3600 in 5 minutes.
+
+![Stress testing example](https://raw.githubusercontent.com/eccanto/base-performance-testing-k6-elasticsearch-kibana/main/docs/images/kibana-report-stress-testing.png)
 
 #### Case 3: Soak testing
 
 **Scenario parameters**
 
-* **number of users**: 2200 concurrent users, 10% more than the normal design capacity.
-* **test duration**: 24 hours.
+* **Number of users**: 2200 concurrent users, 10% more than the normal design capacity.
+* **Test duration**: 10 minutes.
+
+**Steps**
+
+1. **Constant period**: keep the number of users constant at 2200 for 10 minutes.
+
+![Soak testing example](https://raw.githubusercontent.com/eccanto/base-performance-testing-k6-elasticsearch-kibana/main/docs/images/kibana-report-soak-testing.png)
 
 #### Case 4: Spike testing
 
 **Scenario parameters**
 
-* `test duration`: ~5 minutes.
-* `number of spikes`: 2 spikes of 3600 concurrent users, 20% more than the maximum designed capacity.
-* `initial number of users`: 1 minute 30 seconds, start with 2000 concurrent users.
-* `first spike`: 1 second, add 1600 to reach 3600 concurrent users.
-* `intermediate number of users`: 2 minutes, decrease to 2000 concurrent users.
-* `second spike`: 1 second, add 1600 to reach 3600 concurrent users.
-* `final number of users`: 1 minute 30 seconds, decrease to 2000 concurrent users.
+* **Test duration**: 5 minutes.
+* **Number of spikes**: 2 spikes of 3600 concurrent users, 20% more than the maximum designed capacity.
+
+**Steps**
+
+1. **Constant period**: keep the number of users constant at 2000 for 1.5 minutes.
+2. **first spike**: increase the number of users from 2000 to 3600 for 3 seconds.
+3. **Constant period**: keep the number of users constant at 2000 for 2 minutes.
+4. **second spike**: increase the number of users from 2000 to 3600 for 3 seconds.
+5. **Constant period**: keep the number of users constant at 2000 for 1.5 minutes.
+
+![Spike testing example](https://raw.githubusercontent.com/eccanto/base-performance-testing-k6-elasticsearch-kibana/main/docs/images/kibana-report-spike-testing.png)
 
 ### Implementations
 
