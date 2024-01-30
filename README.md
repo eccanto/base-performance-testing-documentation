@@ -196,6 +196,7 @@ that must be included in subsequent requests to access protected resources.
 
 * [Performance testing using k6 + Elasticsearch + Kibana + Docker compose](https://github.com/eccanto/base-performance-testing-k6-elasticsearch-kibana/tree/main)
 * [Performance testing using Gatling with Java and Scala](https://github.com/eccanto/base-performance-testing-gatling)
+* [Performance testing using Locust](https://github.com/eccanto/base-performance-testing-locust)
 
 ## Developers
 
